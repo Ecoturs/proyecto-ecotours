@@ -1,0 +1,83 @@
+{% extends "inicio/encabezado.html" %}
+{% block titulo %}Opiniones{% endblock %}
+{% load static %}
+
+{% block encabezado %}
+<link rel="stylesheet" href="{% static 'css/opiniones.css' %}">
+
+    <section class="opiniones-section">
+
+        <div class="container">
+
+        <h2 class="titulo-opiniones">Opiniones</h2>
+
+
+{% endblock %}
+
+{% block contenido %}
+<div class="opiniones-container">
+
+<!-- OPINION -->
+    <div class="opinion-card">
+
+        <div class="opinion-texto">
+            <p class="usuario"><strong>Usuario:</strong> Pequeño Cacahuate</p>
+
+            <p class="comentario">
+            Si me gusto, solo que habia mucha gente,
+            pero iria de nuevo solo por la atención en el Tours
+            </p>
+    </div>
+
+    <div class="opinion-rating">
+        <p class="rating-titulo">Puntuación</p>
+
+            <div class="stars">
+                <span class="star active">★</span>
+                <span class="star active">★</span>
+                <span class="star active">★</span>
+                <span class="star active">★</span>
+                <span class="star">★</span>
+            </div>
+
+    </div>
+
+</div>
+
+<!-- AGREGAR OPINION -->
+<div class="opinion-card agregar-opinion">
+
+    <div class="agregar-texto">
+       <input type="text" class="input-comentario" placeholder="Agrega un comentario...">
+    </div>
+
+    <div class="opinion-rating">
+
+        <p class="rating-titulo">Puntuación</p>
+
+            <div class="stars">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+            </div>
+
+    </div>
+
+</div>
+
+    <p class="texto-opiniones">
+        Tu opinión es muy importante para nosotros.  
+        Comparte tu experiencia y ayuda a otros viajeros a descubrir los mejores recorridos.
+    </p>
+
+</div>
+
+</div>
+
+</section>
+ 
+
+   
+{% endblock %}
