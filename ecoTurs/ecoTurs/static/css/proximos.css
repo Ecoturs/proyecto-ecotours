@@ -1,0 +1,99 @@
+/* sección general */
+.recorridos-section {
+    padding: 60px 0;
+}
+
+/* textos */
+.titulo-recorridos {
+    text-align: center;
+    background-color: #e5e5e5;
+    padding: 15px;
+    width: 40%;
+    margin: 0 auto 40px auto;
+    font-weight: bold;
+    color: #2C2C2C;
+}
+
+.descripcion-recorridos {
+    text-align: center;
+    color: #2C2C2C;
+    margin-bottom: 40px;
+    font-size: 18px;
+}
+
+/* ===== NUEVO: Auto-ajuste inteligente ===== */
+.cards-auto-container {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    justify-content: center;
+    align-items: start;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.recorrido-card {
+    max-width: 420px !important;
+    width: 100% !important;
+    background-color: #e5e5e5 !important;
+    padding: 25px !important;
+    border-radius: 5px !important;
+    transition: transform 0.3s ease;
+}
+
+.recorrido-card:hover {
+    transform: translateY(-5px);
+}
+
+/* 1 card: Centrada perfecta */
+.cards-auto-container > .recorrido-card:nth-child(1):nth-last-child(1) {
+    justify-self: center;
+    margin: 0 auto;
+}
+
+/* 2 cards: Espaciado uniforme */
+.cards-auto-container > .recorrido-card:nth-child(1):nth-last-child(2),
+.cards-auto-container > .recorrido-card:nth-child(2):nth-last-child(1) {
+    justify-self: center;
+}
+
+/* imagen */
+.recorrido-img img {
+    width: 100% !important;
+    height: 220px !important;
+    object-fit: cover !important;
+    border-radius: 8px;
+}
+
+/* info */
+.recorrido-info {
+    margin-left: 0 !important;  /* Ya no usa flex interno */
+    font-size: 18px;
+    color: #2C2C2C;
+    flex-grow: 1;
+}
+
+/* botón */
+.btn-detalle {
+    display: inline-block !important;
+    margin-top: 15px;
+    background-color: #1B5E20;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    width: 100% !important;
+}
+
+.btn-detalle:hover {
+    background-color: #0C3E47;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cards-auto-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
