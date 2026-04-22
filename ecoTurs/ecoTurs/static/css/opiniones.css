@@ -1,0 +1,97 @@
+
+/* sección */
+.opiniones-section{
+    padding: 60px 0;
+}
+
+/* titulo */
+.titulo-opiniones{
+    text-align: center;
+    background-color: #e5e5e5;
+    padding: 15px;
+    width: 40%;
+    margin: 0 auto 40px auto;
+    font-weight: bold;
+    color: #2C2C2C;
+}
+
+/* contenedor */
+.opiniones-container{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* tarjeta */
+.opinion-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e5e5e5;
+    padding: 30px 40px; /* más espacio interno */
+    border-radius: 6px;
+}
+
+/* texto */
+.opinion-texto{
+    max-width: 60%;
+    padding-left: 30px;   /* separa del borde izquierdo */
+    padding-right: 20px;
+}
+
+.usuario{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.comentario{
+    font-size: 18px;
+}
+
+/* rating */
+.opinion-rating{
+    text-align: center;
+}
+
+.rating-titulo{
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* estrellas */
+.stars{
+    background-color: #1B5E20;
+    padding: 15px 30px;
+    border-radius: 40px;
+    font-size: 24px;
+}
+
+.star{
+    color: #888;
+}
+
+.star.active{
+    color: gold;
+}
+
+/* input */
+.input-comentario{
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.input-comentario:focus{
+    outline: none;
+    border-color: #1B5E20;
+}
+
+/*Texto de abajo*/
+.texto-opiniones{
+    text-align: center;
+    margin-top: 30px;
+    color: #2C2C2C;
+    font-size: 17px;
+}

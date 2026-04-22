@@ -1,0 +1,57 @@
+/* Sección principal */
+.hero-section{
+    background-color: #F5F5F5;
+    padding: 60px 0;
+}
+
+/* contenedor de columnas */
+.hero-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* lado del texto */
+.hero-info{
+    max-width: 500px;
+}
+
+/* Imagen */
+/* Contenedor de la imagen */
+.hero-image{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.hero-image img{
+    width: 550px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Texto */
+.hero-text{
+    font-size: 28px;
+    font-weight: bold;
+    color: #2C2C2C;
+    margin-bottom: 40px;
+    object-fit: cover;
+}
+
+/* Botón */
+.hero-btn{
+    background-color: #1B5E20;
+    color: #FFFFFF;
+    padding: 15px 40px;
+    border-radius: 40px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.hero-btn:hover{
+    background-color: #0C3E47;
+    color: white;
+}

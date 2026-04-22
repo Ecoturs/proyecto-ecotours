@@ -1,0 +1,70 @@
+{% extends "inicio/encabezado.html" %}
+{% block titulo %}ECOTOURS{% endblock %}
+{% load static %}
+
+{% block estilos %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block encabezado %}
+<h2 class="hero-text">Bienvenido a EcoTours</h2>
+
+<div class="hero-image mt-3">
+  <div id="heroCarousel" class="carousel slide rounded-3 overflow-hidden shadow-sm"
+       data-bs-ride="carousel">
+
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'image/CatedralMorelia.jpg' %}"
+             class="d-block w-100" alt="Catedral Morelia"
+             style="height:420px; object-fit:cover;">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'image/SanMiguel.jpg' %}"
+             class="d-block w-100" alt="San Miguel"
+             style="height:420px; object-fit:cover;">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'image/LosCabos.jpg' %}"
+             class="d-block w-100" alt="Los Cabos"
+             style="height:420px; object-fit:cover;">
+      </div>
+    </div>
+
+    <!-- Botón anterior -->
+    <button class="carousel-control-prev" type="button"
+            data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <!-- Botón siguiente -->
+    <button class="carousel-control-next" type="button"
+            data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+
+  </div>
+</div>
+{% endblock %}
+
+{% block contenido %}
+<section class="hero-section">
+  <div class="container text-center">
+
+    <p class="hero-text">
+      En EcoTours te invitamos a descubrir lo mejor de México a través de experiencias únicas y emocionantes.
+      Organizamos viajes a destinos increíbles donde podrás disfrutar de la naturaleza, la cultura y la aventura
+      que hacen de México un lugar extraordinario.
+    </p>
+
+    <p class="hero-text fw-semibold">
+      Viaja, explora y vive momentos inolvidables con EcoTours.
+    </p>
+
+    <a href="{% url 'Proximos' %}" class="btn hero-btn">
+      Ver Recorridos
+    </a>
+
+  </div>
+</section>
+{% endblock %}

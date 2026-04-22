@@ -1,0 +1,36 @@
+/* Fondo principal del navbar */
+.custom-navbar{
+    background-color: #0C3E47 !important;
+}
+
+/* Logo */
+.logo{
+    width: 70px;
+    height: 50px;
+    background-color: #D9D9D9;
+    margin-right: 10px;
+}
+
+/* Texto ECOTURS */
+.brand-text{
+    background-color: #BDBDBD;
+    padding: 8px 20px;
+    font-weight: bold;
+    color: #2C2C2C;
+}
+
+/* Botones del menú */
+.menu-btn{
+    background-color: #BDBDBD;
+    margin-left: 10px;
+    padding: 8px 18px !important;
+    color: #2C2C2C !important;
+    font-weight: 500;
+}
+
+/* Hover */
+.menu-btn:hover{
+    background-color: #1B5E20;
+    color: #FFFFFF !important;
+}
+
