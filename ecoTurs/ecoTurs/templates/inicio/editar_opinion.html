@@ -1,0 +1,51 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block titulo %}Editar Opinión - EcoTours{% endblock %}
+
+{% block encabezado %}
+<h2 class="fw-bold" style="color:#1B5E20;">
+  <i class="bi bi-pencil me-2"></i>Editar Opinión
+</h2>
+{% endblock %}
+
+{% block contenido %}
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label class="form-label fw-medium">Calificación</label>
+        <select name="calificacion" class="form-select">
+          {% for i in "12345" %}
+            <option value="{{ forloop.counter }}"
+              {% if forloop.counter == opinion.calificacion %}selected{% endif %}>
+              {% for j in "12345" %}
+                {% if forloop.counter <= forloop.parentloop.counter %}★{% else %}☆{% endif %}
+              {% endfor %}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-medium">Comentario</label>
+        <textarea name="comentario" class="form-control" rows="4">{{ opinion.comentario }}</textarea>
+      </div>
+
+      <div class="d-flex gap-2">
+        <button type="submit" class="btn fw-bold text-white"
+                style="background-color:#1B5E20;">
+          <i class="bi bi-check-circle me-1"></i>Guardar cambios
+        </button>
+        <a href="{% url 'Opiniones' %}" class="btn btn-outline-secondary rounded-3">
+          <i class="bi bi-x-circle me-1"></i>Cancelar
+        </a>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block titulo %}Eliminar Opinión - EcoTours{% endblock %}
+
+{% block encabezado %}
+<h2 class="fw-bold text-danger">
+  <i class="bi bi-trash me-2"></i>Eliminar Opinión
+</h2>
+{% endblock %}
+
+{% block contenido %}
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+
+    <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+      <p class="fw-medium mb-1">Comentario:</p>
+      <p class="text-muted">{{ opinion.comentario }}</p>
+      <p class="fw-medium mb-1">Calificación:</p>
+      <p class="text-warning fs-5">
+        {% for i in "12345" %}
+          {% if forloop.counter <= opinion.calificacion %}★{% else %}☆{% endif %}
+        {% endfor %}
+      </p>
+    </div>
+
+    <p class="text-danger fw-medium">
+      <i class="bi bi-exclamation-triangle me-1"></i>
+      ¿Estás seguro de que deseas eliminar esta opinión? Esta acción no se puede deshacer.
+    </p>
+
+    <form method="POST">
+      {% csrf_token %}
+      <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-danger fw-bold rounded-3">
+          <i class="bi bi-trash me-1"></i>Sí, eliminar
+        </button>
+        <a href="{% url 'Opiniones' %}" class="btn btn-outline-secondary rounded-3">
+          <i class="bi bi-x-circle me-1"></i>Cancelar
+        </a>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

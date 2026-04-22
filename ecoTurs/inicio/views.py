@@ -23,10 +23,6 @@ def opiniones(request):
     todas = Opinion.objects.all().order_by('-created')
     form = None
     if request.user.is_authenticated:
-        recorridos_usuario = Recorrido.objects.filter(
-            preinscripcion__usuario=request.user,
-            fecha__lt=timezone.localdate()
-        ).distinct()
         if request.method == 'POST':
             form = OpinionForm(request.POST)
             if form.is_valid():
@@ -37,10 +33,44 @@ def opiniones(request):
                 return redirect('Opiniones')
         else:
             form = OpinionForm()
-        form.fields['recorrido'].queryset = recorridos_usuario
     return render(request, "inicio/opiniones.html", {
         'opiniones': todas,
         'form': form
+    })
+
+
+@login_required(login_url='login')
+def editar_opinion(request, id):
+    opinion = get_object_or_404(Opinion, id=id)
+    if opinion.usuario != request.user:
+        messages.error(request, "No tienes permiso para editar esta opinión.")
+        return redirect('Opiniones')
+    if request.method == 'POST':
+        form = OpinionForm(request.POST, instance=opinion)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "¡Opinión actualizada correctamente!")
+            return redirect('Opiniones')
+    else:
+        form = OpinionForm(instance=opinion)
+    return render(request, "inicio/editar_opinion.html", {
+        'form': form,
+        'opinion': opinion
+    })
+
+
+@login_required(login_url='login')
+def eliminar_opinion(request, id):
+    opinion = get_object_or_404(Opinion, id=id)
+    if opinion.usuario != request.user:
+        messages.error(request, "No tienes permiso para eliminar esta opinión.")
+        return redirect('Opiniones')
+    if request.method == 'POST':
+        opinion.delete()
+        messages.success(request, "Opinión eliminada correctamente.")
+        return redirect('Opiniones')
+    return render(request, "inicio/eliminar_opinion.html", {
+        'opinion': opinion
     })
 
 
@@ -59,10 +89,8 @@ def realizados(request):
 
 def detalles(request, id):
     recorrido = get_object_or_404(Recorrido, id=id)
-
     if not request.user.is_authenticated:
         return redirect(f'/login/?next=/detalles/{id}/')
-
     if request.method == 'POST':
         form = PreInscripcionForm(request.POST)
         if form.is_valid():
@@ -74,7 +102,6 @@ def detalles(request, id):
             return redirect('Proximos')
     else:
         form = PreInscripcionForm()
-
     return render(request, "inicio/detalles.html", {
         'recorrido': recorrido,
         'form': form

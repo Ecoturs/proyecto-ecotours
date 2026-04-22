@@ -42,9 +42,11 @@ class PreInscripcion(models.Model):
 
 class Opinion(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Usuario")
-    recorrido = models.ForeignKey(Recorrido, on_delete=models.CASCADE, verbose_name="Recorrido")
     comentario = models.TextField(verbose_name="Comentario")
-    calificacion = models.IntegerField(choices=[(i, i) for i in range(1, 6)], verbose_name="Calificación")
+    calificacion = models.IntegerField(
+        choices=[(i, i) for i in range(1, 6)],
+        verbose_name="Calificación"
+    )
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -53,4 +55,4 @@ class Opinion(models.Model):
         ordering = ["-created"]
 
     def __str__(self):
-        return f"{self.usuario.username} - {self.recorrido.nombre}"
+        return f"{self.usuario.username} - {self.calificacion}★"

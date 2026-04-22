@@ -25,10 +25,20 @@ class RegistroForm(UserCreationForm):
 
 
 class OpinionForm(forms.ModelForm):
+    calificacion = forms.ChoiceField(
+        choices=[(i, f'{"★" * i}') for i in range(1, 6)],
+        label="Calificación"
+    )
+
     class Meta:
         model = Opinion
-        fields = ['recorrido', 'comentario', 'calificacion']
+        fields = ['comentario', 'calificacion']
         widgets = {
-            'comentario': forms.Textarea(attrs={'rows': 3}),
-            'calificacion': forms.Select(),
+            'comentario': forms.Textarea(attrs={
+                'rows': 3,
+                'placeholder': 'Escribe tu opinión aquí...'
+            }),
+        }
+        labels = {
+            'comentario': 'Comentario',
         }

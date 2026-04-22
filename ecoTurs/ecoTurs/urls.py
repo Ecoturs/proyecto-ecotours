@@ -24,9 +24,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.principal, name='Principal'),
     path('proximos/', views.proximos, name='Proximos'),
-    path('opiniones/', views.opiniones, name='Opiniones'),
     path('realizados/', views.realizados, name='Realizados'),
     path('detalles/<int:id>/', views.detalles, name='Detalles'),
+
+    # Opiniones
+    path('opiniones/', views.opiniones, name='Opiniones'),
+    path('opiniones/editar/<int:id>/', views.editar_opinion, name='EditarOpinion'),
+    path('opiniones/eliminar/<int:id>/', views.eliminar_opinion, name='EliminarOpinion'),
 
     # auth
     path('login/', auth_views.LoginView.as_view(template_name='inicio/login.html'), name='login'),
