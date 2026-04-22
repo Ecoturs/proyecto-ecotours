@@ -1,4 +1,5 @@
 {% extends "inicio/encabezado.html" %}
+{% block descripcion %}EcoTours - Próximos recorridos disponibles para reservar.{% endblock %}
 {% block titulo %}Próximos{% endblock %}
 {% load static %}
 
@@ -32,8 +33,12 @@
         <div class="p-3 pb-0">
           <img src="{% if recorrido.imagen %}{{ recorrido.imagen.url }}{% else %}{% static 'image/SanMiguel.jpg' %}{% endif %}"
                class="w-100"
-               alt="{{ recorrido.nombre }}"
-               style="height:220px; object-fit:cover; border-radius:10px;">
+                alt="{{ recorrido.nombre }}"
+                width="600"
+                height="220"
+                loading="lazy"
+                decoding="async"
+                style="height:220px; object-fit:cover; border-radius:10px;">
         </div>
 
         <div class="card-body d-flex flex-column p-4">

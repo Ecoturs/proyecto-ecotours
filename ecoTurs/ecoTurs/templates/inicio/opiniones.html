@@ -1,5 +1,5 @@
 {% extends "inicio/encabezado.html" %}
-
+{% block descripcion %}EcoTours - Opiniones de nuestros usuarios sobre los recorridos.{% endblock %}
 {% block titulo %}Opiniones - EcoTours{% endblock %}
 
 {% block estilos %}
@@ -55,8 +55,8 @@
     {% csrf_token %}
 
     <div class="mb-3">
-      <label class="form-label fw-medium">Calificación</label>
-      <div class="star-rating">
+      <label class="form-label fw-medium" id="calificacion-label">Calificación</label>
+      <div class="star-rating" role="group" aria-labelledby="calificacion-label">
         <input type="radio" name="calificacion" id="star5" value="5">
         <label for="star5" title="5 estrellas"><i class="bi bi-star-fill"></i></label>
         <input type="radio" name="calificacion" id="star4" value="4">
@@ -71,9 +71,9 @@
     </div>
 
     <div class="mb-3">
-      <label class="form-label fw-medium">Comentario</label>
-      <textarea name="comentario" class="form-control" rows="3"
-                placeholder="Escribe tu opinión aquí..."></textarea>
+        <label for="comentario" class="form-label fw-medium">Comentario</label>
+        <textarea name="comentario" id="comentario" class="form-control" rows="3"
+                placeholder="Escribe tu opinión aquí..."></textarea>    
     </div>
 
     <button type="submit" class="btn fw-bold text-white"
@@ -111,12 +111,14 @@
       {% if request.user == opinion.usuario %}
       <div class="d-flex gap-2">
         <a href="{% url 'EditarOpinion' opinion.id %}"
-           class="btn btn-sm btn-outline-secondary rounded-3">
-          <i class="bi bi-pencil"></i>
-        </a>
-        <a href="{% url 'EliminarOpinion' opinion.id %}"
-           class="btn btn-sm btn-outline-danger rounded-3">
-          <i class="bi bi-trash"></i>
+        class="btn btn-sm btn-outline-secondary rounded-3"
+        aria-label="Editar opinión de {{ opinion.usuario.username }}">
+            <i class="bi bi-pencil" aria-hidden="true"></i>
+            </a>
+            <a href="{% url 'EliminarOpinion' opinion.id %}"
+            class="btn btn-sm btn-outline-danger rounded-3"
+            aria-label="Eliminar opinión de {{ opinion.usuario.username }}">
+            <i class="bi bi-trash" aria-hidden="true"></i>
         </a>
       </div>
       {% endif %}
