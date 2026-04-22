@@ -4,7 +4,7 @@
 
 {% block encabezado %}
 <h2 class="fw-bold" style="color:#1B5E20;">
-  <i class="bi bi-person-plus me-2"></i>Crear Cuenta
+  <i class="bi bi-person-plus me-2" aria-hidden="true"></i>Crear Cuenta
 </h2>
 {% endblock %}
 
@@ -14,7 +14,7 @@
   {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
       {{ message }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
     </div>
   {% endfor %}
 {% endif %}
@@ -26,9 +26,12 @@
 
       {% for field in form %}
         <div class="mb-3">
-          <label class="form-label fw-medium">{{ field.label }}</label>
+          <label for="id_{{ field.html_name }}" class="form-label fw-medium">
+            {{ field.label }}
+          </label>
           <input type="{{ field.field.widget.input_type }}"
                  name="{{ field.html_name }}"
+                 id="id_{{ field.html_name }}"
                  class="form-control {% if field.errors %}is-invalid{% endif %}"
                  {% if field.value %}value="{{ field.value }}"{% endif %}>
           {% for error in field.errors %}
@@ -40,7 +43,7 @@
       <div class="d-grid mb-3">
         <button type="submit" class="btn fw-bold text-white"
                 style="background-color:#1B5E20;">
-          <i class="bi bi-person-check me-1"></i>Registrarse
+          <i class="bi bi-person-check me-1" aria-hidden="true"></i>Registrarse
         </button>
       </div>
 

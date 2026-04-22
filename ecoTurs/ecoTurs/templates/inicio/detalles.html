@@ -8,7 +8,7 @@
 <div class="d-flex align-items-center justify-content-center gap-3 mb-1">
   <div class="rounded-3 p-2 d-flex align-items-center justify-content-center"
        style="background-color:#0C3E47;">
-    <i class="bi bi-map text-white fs-4"></i>
+    <i class="bi bi-map text-white fs-4" aria-hidden="true"></i>
   </div>
   <div class="text-center">
     <h2 class="fw-bold mb-0" style="color:#0C3E47;">{{ recorrido.nombre }}</h2>
@@ -26,10 +26,14 @@
       {% if recorrido.imagen %}
         <img src="{{ recorrido.imagen.url }}"
              class="w-100" alt="{{ recorrido.nombre }}"
+             width="600" height="280"
+             loading="lazy"
              style="height:280px; object-fit:cover;">
       {% else %}
         <img src="{% static 'image/SanMiguel.jpg' %}"
              class="w-100" alt="{{ recorrido.nombre }}"
+             width="600" height="280"
+             loading="lazy"
              style="height:280px; object-fit:cover;">
       {% endif %}
     </div>
@@ -45,19 +49,19 @@
     <div class="card border-0 shadow-sm rounded-3 p-4">
       <ul class="list-unstyled mb-4 small">
         <li class="mb-2">
-          <i class="bi bi-calendar-event me-2" style="color:#0C3E47;"></i>
+          <i class="bi bi-calendar-event me-2" aria-hidden="true" style="color:#0C3E47;"></i>
           <strong>Fecha:</strong> {{ recorrido.fecha|date:"d M Y" }}
         </li>
         <li class="mb-2">
-          <i class="bi bi-map me-2" style="color:#0C3E47;"></i>
+          <i class="bi bi-map me-2" aria-hidden="true" style="color:#0C3E47;"></i>
           <strong>Estado:</strong> {{ recorrido.estado }}
         </li>
         <li class="mb-2">
-          <i class="bi bi-geo-alt me-2" style="color:#0C3E47;"></i>
+          <i class="bi bi-geo-alt me-2" aria-hidden="true" style="color:#0C3E47;"></i>
           <strong>Ciudad:</strong> {{ recorrido.ciudad }}
         </li>
         <li>
-          <i class="bi bi-cash-coin me-2" style="color:#0C3E47;"></i>
+          <i class="bi bi-cash-coin me-2" aria-hidden="true" style="color:#0C3E47;"></i>
           <strong>Costo:</strong>
           <span class="fw-bold fs-4 ms-1" style="color:#1B5E20;">${{ recorrido.costo }}</span>
         </li>
@@ -65,7 +69,7 @@
 
       <a href="{% url 'Proximos' %}"
          class="btn btn-outline-secondary rounded-3 fw-semibold">
-        <i class="bi bi-arrow-left me-1"></i>Volver a Próximos
+        <i class="bi bi-arrow-left me-1" aria-hidden="true"></i>Volver a Próximos
       </a>
     </div>
 
@@ -74,7 +78,7 @@
   <div class="col-md-6">
     <div class="card border-0 shadow-sm rounded-3 p-4">
       <div class="d-flex align-items-center gap-2 mb-4">
-        <i class="bi bi-person-lines-fill fs-4" style="color:#0C3E47;"></i>
+        <i class="bi bi-person-lines-fill fs-4" aria-hidden="true" style="color:#0C3E47;"></i>
         <h4 class="fw-bold mb-0" style="color:#0C3E47;">Formulario de Pre-inscripción</h4>
       </div>
 
@@ -82,38 +86,38 @@
         {% csrf_token %}
 
         <div class="mb-3">
-          <label class="form-label fw-semibold small">
-            <i class="bi bi-person me-1" style="color:#0C3E47;"></i>Nombre
+          <label for="nombre" class="form-label fw-semibold small">
+            <i class="bi bi-person me-1" aria-hidden="true" style="color:#0C3E47;"></i>Nombre
           </label>
-          <input type="text" name="nombre" class="form-control rounded-3" required>
+          <input type="text" name="nombre" id="nombre" class="form-control rounded-3" required>
         </div>
 
         <div class="mb-3">
-          <label class="form-label fw-semibold small">
-            <i class="bi bi-envelope me-1" style="color:#0C3E47;"></i>Correo
+          <label for="correo" class="form-label fw-semibold small">
+            <i class="bi bi-envelope me-1" aria-hidden="true" style="color:#0C3E47;"></i>Correo
           </label>
-          <input type="email" name="correo" class="form-control rounded-3" required>
+          <input type="email" name="correo" id="correo" class="form-control rounded-3" required>
         </div>
 
         <div class="mb-3">
-          <label class="form-label fw-semibold small">
-            <i class="bi bi-telephone me-1" style="color:#0C3E47;"></i>Teléfono
+          <label for="telefono" class="form-label fw-semibold small">
+            <i class="bi bi-telephone me-1" aria-hidden="true" style="color:#0C3E47;"></i>Teléfono
           </label>
-          <input type="text" name="telefono" class="form-control rounded-3" required>
+          <input type="text" name="telefono" id="telefono" class="form-control rounded-3" required>
         </div>
 
         <div class="row g-3 mb-3">
           <div class="col-6">
-            <label class="form-label fw-semibold small">
-              <i class="bi bi-geo-alt me-1" style="color:#0C3E47;"></i>Ciudad
+            <label for="ciudad" class="form-label fw-semibold small">
+              <i class="bi bi-geo-alt me-1" aria-hidden="true" style="color:#0C3E47;"></i>Ciudad
             </label>
-            <input type="text" name="ciudad" class="form-control rounded-3" required>
+            <input type="text" name="ciudad" id="ciudad" class="form-control rounded-3" required>
           </div>
           <div class="col-6">
-            <label class="form-label fw-semibold small">
-              <i class="bi bi-map me-1" style="color:#0C3E47;"></i>Estado
+            <label for="estado" class="form-label fw-semibold small">
+              <i class="bi bi-map me-1" aria-hidden="true" style="color:#0C3E47;"></i>Estado
             </label>
-            <input type="text" name="estado" class="form-control rounded-3" required>
+            <input type="text" name="estado" id="estado" class="form-control rounded-3" required>
           </div>
         </div>
 
@@ -121,7 +125,7 @@
           <button type="submit"
                   class="btn text-white fw-bold rounded-3 py-2"
                   style="background-color:#1B5E20;">
-            <i class="bi bi-check-circle me-1"></i>Registrarme
+            <i class="bi bi-check-circle me-1" aria-hidden="true"></i>Registrarme
           </button>
         </div>
 
@@ -134,7 +138,7 @@
 {% if messages %}
   <div class="alert border-0 rounded-3 mt-4 d-flex align-items-center gap-2"
        style="background-color:#d4edda; color:#1B5E20;">
-    <i class="bi bi-check-circle-fill fs-5"></i>
+    <i class="bi bi-check-circle-fill fs-5" aria-hidden="true"></i>
     {% for message in messages %}
       <span>{{ message }}</span>
     {% endfor %}
