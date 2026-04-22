@@ -2,6 +2,33 @@
 
 {% block titulo %}Opiniones - EcoTours{% endblock %}
 
+{% block estilos %}
+<style>
+  .star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+  .star-rating input {
+    display: none;
+  }
+  .star-rating label {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.15s ease;
+  }
+  .star-rating input:checked ~ label {
+    color: #f5a623;
+  }
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
+    color: #f5a623;
+  }
+</style>
+{% endblock %}
+
 {% block encabezado %}
 <h2 class="fw-bold" style="color:#1B5E20;">
   <i class="bi bi-chat-dots me-2"></i>Opiniones
@@ -26,21 +53,29 @@
   </h5>
   <form method="POST">
     {% csrf_token %}
+
     <div class="mb-3">
       <label class="form-label fw-medium">Calificación</label>
-      <select name="calificacion" class="form-select">
-        <option value="1">★</option>
-        <option value="2">★★</option>
-        <option value="3">★★★</option>
-        <option value="4">★★★★</option>
-        <option value="5" selected>★★★★★</option>
-      </select>
+      <div class="star-rating">
+        <input type="radio" name="calificacion" id="star5" value="5">
+        <label for="star5" title="5 estrellas"><i class="bi bi-star-fill"></i></label>
+        <input type="radio" name="calificacion" id="star4" value="4">
+        <label for="star4" title="4 estrellas"><i class="bi bi-star-fill"></i></label>
+        <input type="radio" name="calificacion" id="star3" value="3">
+        <label for="star3" title="3 estrellas"><i class="bi bi-star-fill"></i></label>
+        <input type="radio" name="calificacion" id="star2" value="2">
+        <label for="star2" title="2 estrellas"><i class="bi bi-star-fill"></i></label>
+        <input type="radio" name="calificacion" id="star1" value="1">
+        <label for="star1" title="1 estrella"><i class="bi bi-star-fill"></i></label>
+      </div>
     </div>
+
     <div class="mb-3">
       <label class="form-label fw-medium">Comentario</label>
       <textarea name="comentario" class="form-control" rows="3"
                 placeholder="Escribe tu opinión aquí..."></textarea>
     </div>
+
     <button type="submit" class="btn fw-bold text-white"
             style="background-color:#1B5E20;">
       <i class="bi bi-send me-1"></i>Publicar
@@ -85,6 +120,7 @@
         </a>
       </div>
       {% endif %}
+
     </div>
   </div>
   {% endfor %}

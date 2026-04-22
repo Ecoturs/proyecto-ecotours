@@ -2,6 +2,33 @@
 
 {% block titulo %}Editar Opinión - EcoTours{% endblock %}
 
+{% block estilos %}
+<style>
+  .star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+  .star-rating input {
+    display: none;
+  }
+  .star-rating label {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.15s ease;
+  }
+  .star-rating input:checked ~ label {
+    color: #f5a623;
+  }
+  .star-rating label:hover,
+  .star-rating label:hover ~ label {
+    color: #f5a623;
+  }
+</style>
+{% endblock %}
+
 {% block encabezado %}
 <h2 class="fw-bold" style="color:#1B5E20;">
   <i class="bi bi-pencil me-2"></i>Editar Opinión
@@ -17,16 +44,18 @@
 
       <div class="mb-3">
         <label class="form-label fw-medium">Calificación</label>
-        <select name="calificacion" class="form-select">
-          {% for i in "12345" %}
-            <option value="{{ forloop.counter }}"
-              {% if forloop.counter == opinion.calificacion %}selected{% endif %}>
-              {% for j in "12345" %}
-                {% if forloop.counter <= forloop.parentloop.counter %}★{% else %}☆{% endif %}
-              {% endfor %}
-            </option>
-          {% endfor %}
-        </select>
+        <div class="star-rating">
+          <input type="radio" name="calificacion" id="star5" value="5" {% if opinion.calificacion == 5 %}checked{% endif %}>
+          <label for="star5" title="5 estrellas"><i class="bi bi-star-fill"></i></label>
+          <input type="radio" name="calificacion" id="star4" value="4" {% if opinion.calificacion == 4 %}checked{% endif %}>
+          <label for="star4" title="4 estrellas"><i class="bi bi-star-fill"></i></label>
+          <input type="radio" name="calificacion" id="star3" value="3" {% if opinion.calificacion == 3 %}checked{% endif %}>
+          <label for="star3" title="3 estrellas"><i class="bi bi-star-fill"></i></label>
+          <input type="radio" name="calificacion" id="star2" value="2" {% if opinion.calificacion == 2 %}checked{% endif %}>
+          <label for="star2" title="2 estrellas"><i class="bi bi-star-fill"></i></label>
+          <input type="radio" name="calificacion" id="star1" value="1" {% if opinion.calificacion == 1 %}checked{% endif %}>
+          <label for="star1" title="1 estrella"><i class="bi bi-star-fill"></i></label>
+        </div>
       </div>
 
       <div class="mb-3">
