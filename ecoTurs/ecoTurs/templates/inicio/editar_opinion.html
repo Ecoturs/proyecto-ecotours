@@ -1,6 +1,7 @@
 {% extends "inicio/encabezado.html" %}
 
 {% block titulo %}Editar Opinión - EcoTours{% endblock %}
+{% block descripcion %}EcoTours - Edita tu opinión sobre el recorrido.{% endblock %}
 
 {% block estilos %}
 <style>
@@ -31,7 +32,7 @@
 
 {% block encabezado %}
 <h2 class="fw-bold" style="color:#1B5E20;">
-  <i class="bi bi-pencil me-2"></i>Editar Opinión
+  <i class="bi bi-pencil me-2" aria-hidden="true"></i>Editar Opinión
 </h2>
 {% endblock %}
 
@@ -43,33 +44,33 @@
       {% csrf_token %}
 
       <div class="mb-3">
-        <label class="form-label fw-medium">Calificación</label>
-        <div class="star-rating">
+        <label class="form-label fw-medium" id="calificacion-edit-label">Calificación</label>
+        <div class="star-rating" role="group" aria-labelledby="calificacion-edit-label">
           <input type="radio" name="calificacion" id="star5" value="5" {% if opinion.calificacion == 5 %}checked{% endif %}>
-          <label for="star5" title="5 estrellas"><i class="bi bi-star-fill"></i></label>
+          <label for="star5" title="5 estrellas"><i class="bi bi-star-fill" aria-hidden="true"></i></label>
           <input type="radio" name="calificacion" id="star4" value="4" {% if opinion.calificacion == 4 %}checked{% endif %}>
-          <label for="star4" title="4 estrellas"><i class="bi bi-star-fill"></i></label>
+          <label for="star4" title="4 estrellas"><i class="bi bi-star-fill" aria-hidden="true"></i></label>
           <input type="radio" name="calificacion" id="star3" value="3" {% if opinion.calificacion == 3 %}checked{% endif %}>
-          <label for="star3" title="3 estrellas"><i class="bi bi-star-fill"></i></label>
+          <label for="star3" title="3 estrellas"><i class="bi bi-star-fill" aria-hidden="true"></i></label>
           <input type="radio" name="calificacion" id="star2" value="2" {% if opinion.calificacion == 2 %}checked{% endif %}>
-          <label for="star2" title="2 estrellas"><i class="bi bi-star-fill"></i></label>
+          <label for="star2" title="2 estrellas"><i class="bi bi-star-fill" aria-hidden="true"></i></label>
           <input type="radio" name="calificacion" id="star1" value="1" {% if opinion.calificacion == 1 %}checked{% endif %}>
-          <label for="star1" title="1 estrella"><i class="bi bi-star-fill"></i></label>
+          <label for="star1" title="1 estrella"><i class="bi bi-star-fill" aria-hidden="true"></i></label>
         </div>
       </div>
 
       <div class="mb-3">
-        <label class="form-label fw-medium">Comentario</label>
-        <textarea name="comentario" class="form-control" rows="4">{{ opinion.comentario }}</textarea>
+        <label for="comentario" class="form-label fw-medium">Comentario</label>
+        <textarea name="comentario" id="comentario" class="form-control" rows="4">{{ opinion.comentario }}</textarea>
       </div>
 
       <div class="d-flex gap-2">
         <button type="submit" class="btn fw-bold text-white"
                 style="background-color:#1B5E20;">
-          <i class="bi bi-check-circle me-1"></i>Guardar cambios
+          <i class="bi bi-check-circle me-1" aria-hidden="true"></i>Guardar cambios
         </button>
         <a href="{% url 'Opiniones' %}" class="btn btn-outline-secondary rounded-3">
-          <i class="bi bi-x-circle me-1"></i>Cancelar
+          <i class="bi bi-x-circle me-1" aria-hidden="true"></i>Cancelar
         </a>
       </div>
 

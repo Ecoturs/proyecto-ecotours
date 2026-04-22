@@ -4,7 +4,7 @@
 
 {% block encabezado %}
 <h2 class="fw-bold" style="color:#1B5E20;">
-  <i class="bi bi-person-circle me-2"></i>Iniciar Sesión
+  <i class="bi bi-person-circle me-2" aria-hidden="true"></i>Iniciar Sesión
 </h2>
 {% endblock %}
 
@@ -14,7 +14,7 @@
   {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
       {{ message }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
     </div>
   {% endfor %}
 {% endif %}
@@ -25,19 +25,19 @@
       {% csrf_token %}
 
       <div class="mb-3">
-        <label class="form-label fw-medium">Usuario</label>
-        <input type="text" name="username" class="form-control" required autofocus>
+        <label for="username" class="form-label fw-medium">Usuario</label>
+        <input type="text" name="username" id="username" class="form-control" required autofocus>
       </div>
 
       <div class="mb-3">
-        <label class="form-label fw-medium">Contraseña</label>
-        <input type="password" name="password" class="form-control" required>
+        <label for="password" class="form-label fw-medium">Contraseña</label>
+        <input type="password" name="password" id="password" class="form-control" required>
       </div>
 
       <div class="d-grid mb-3">
         <button type="submit" class="btn fw-bold text-white"
                 style="background-color:#1B5E20;">
-          <i class="bi bi-box-arrow-in-right me-1"></i>Entrar
+          <i class="bi bi-box-arrow-in-right me-1" aria-hidden="true"></i>Entrar
         </button>
       </div>
 
