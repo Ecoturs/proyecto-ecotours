@@ -1,0 +1,56 @@
+{% extends "inicio/encabezado.html" %}
+
+{% block titulo %}Registro - EcoTours{% endblock %}
+
+{% block encabezado %}
+<h2 class="fw-bold" style="color:#1B5E20;">
+  <i class="bi bi-person-plus me-2"></i>Crear Cuenta
+</h2>
+{% endblock %}
+
+{% block contenido %}
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  {% endfor %}
+{% endif %}
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <form method="POST">
+      {% csrf_token %}
+
+      {% for field in form %}
+        <div class="mb-3">
+          <label class="form-label fw-medium">{{ field.label }}</label>
+          <input type="{{ field.field.widget.input_type }}"
+                 name="{{ field.html_name }}"
+                 class="form-control {% if field.errors %}is-invalid{% endif %}"
+                 {% if field.value %}value="{{ field.value }}"{% endif %}>
+          {% for error in field.errors %}
+            <div class="invalid-feedback">{{ error }}</div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+      <div class="d-grid mb-3">
+        <button type="submit" class="btn fw-bold text-white"
+                style="background-color:#1B5E20;">
+          <i class="bi bi-person-check me-1"></i>Registrarse
+        </button>
+      </div>
+
+      <p class="text-center text-muted">
+        ¿Ya tienes cuenta?
+        <a href="{% url 'login' %}" style="color:#1B5E20;">Inicia sesión aquí</a>
+      </p>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

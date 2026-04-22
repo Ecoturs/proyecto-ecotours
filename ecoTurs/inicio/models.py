@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Recorrido(models.Model):
@@ -21,6 +22,7 @@ class Recorrido(models.Model):
 
 
 class PreInscripcion(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Usuario")
     nombre = models.CharField(max_length=100, verbose_name="Nombre")
     correo = models.EmailField(verbose_name="Correo")
     telefono = models.CharField(max_length=15, verbose_name="Teléfono")
@@ -36,3 +38,19 @@ class PreInscripcion(models.Model):
 
     def __str__(self):
         return f"{self.nombre} - {self.recorrido.nombre}"
+
+
+class Opinion(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Usuario")
+    recorrido = models.ForeignKey(Recorrido, on_delete=models.CASCADE, verbose_name="Recorrido")
+    comentario = models.TextField(verbose_name="Comentario")
+    calificacion = models.IntegerField(choices=[(i, i) for i in range(1, 6)], verbose_name="Calificación")
+    created = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Opinión"
+        verbose_name_plural = "Opiniones"
+        ordering = ["-created"]
+
+    def __str__(self):
+        return f"{self.usuario.username} - {self.recorrido.nombre}"

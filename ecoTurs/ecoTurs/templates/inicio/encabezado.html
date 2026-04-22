@@ -59,14 +59,38 @@
           </a>
         </li>
 
-        <!-- LOGIN destacado -->
+        <li class="nav-item">
+          <a class="nav-link menu-btn rounded-3" href="{% url 'Opiniones' %}">
+            <i class="bi bi-chat-dots me-1"></i>OPINIONES
+          </a>
+        </li>
+
+        <!-- LOGIN o USUARIO -->
+        {% if request.user.is_authenticated %}
+        <li class="nav-item dropdown ms-2">
+          <a class="nav-link dropdown-toggle px-4 py-2 rounded-3 fw-bold text-white"
+             href="#" id="userMenu" role="button"
+             data-bs-toggle="dropdown"
+             style="background-color:#1B5E20;">
+            <i class="bi bi-person-check me-1"></i>{{ request.user.username }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+            <li>
+              <a class="dropdown-item text-danger" href="{% url 'logout' %}">
+                <i class="bi bi-box-arrow-right me-1"></i>Cerrar sesión
+              </a>
+            </li>
+          </ul>
+        </li>
+        {% else %}
         <li class="nav-item ms-2">
           <a class="nav-link px-4 py-2 rounded-3 fw-bold text-white"
-             href="#"
+             href="{% url 'login' %}"
              style="background-color:#1B5E20;">
             <i class="bi bi-person-circle me-1"></i>LOGIN
           </a>
         </li>
+        {% endif %}
 
       </ul>
     </div>
